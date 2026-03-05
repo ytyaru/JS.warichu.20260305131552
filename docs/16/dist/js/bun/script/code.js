@@ -1,0 +1,138 @@
+// @bun
+(() => {
+  var __defProp = Object.defineProperty;
+  var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __moduleCache = /* @__PURE__ */ new WeakMap;
+  var __toCommonJS = (from) => {
+    var entry = __moduleCache.get(from), desc;
+    if (entry)
+      return entry;
+    entry = __defProp({}, "__esModule", { value: true });
+    if (from && typeof from === "object" || typeof from === "function")
+      __getOwnPropNames(from).map((key) => !__hasOwnProp.call(entry, key) && __defProp(entry, key, {
+        get: () => from[key],
+        enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+      }));
+    __moduleCache.set(from, entry);
+    return entry;
+  };
+  var __export = (target, all) => {
+    for (var name in all)
+      __defProp(target, name, {
+        get: all[name],
+        enumerable: true,
+        configurable: true,
+        set: (newValue) => all[name] = () => newValue
+      });
+  };
+
+  // src/js/warichu.ts
+  var exports_warichu = {};
+  __export(exports_warichu, {
+    WarichuError: () => WarichuError,
+    Warichu: () => Warichu
+  });
+
+  class WarichuError extends Error {
+    constructor(message) {
+      super(message);
+      this.name = "WarichuError";
+    }
+  }
+
+  class Warichu {
+    config;
+    segmenterWord;
+    segmenterGrapheme;
+    constructor(config = {}) {
+      this.config = {
+        sign: "\uFF08\uFF09",
+        copyable: true,
+        align1: "start",
+        align2: "start",
+        narrowSign: true,
+        error: "warn",
+        diff: 1,
+        ...config
+      };
+      this.segmenterWord = new Intl.Segmenter("ja", { granularity: "word" });
+      this.segmenterGrapheme = new Intl.Segmenter("ja", { granularity: "grapheme" });
+    }
+    getGraphemes(text) {
+      return Array.from(this.segmenterGrapheme.segment(text)).map((s) => s.segment);
+    }
+    _handleError(message) {
+      const { error } = this.config;
+      if (error === "throw")
+        throw new WarichuError(message);
+      if (error === "warn") {
+        console.warn(`[Warichu] ${message}`);
+        return false;
+      }
+      if (typeof error === "function") {
+        if (error.prototype instanceof Error) {
+          const ErrorClass = error;
+          throw new ErrorClass(message);
+        }
+        return error(message) === true;
+      }
+      return false;
+    }
+    _getSplitPoint(content) {
+      const graphemes = this.getGraphemes(content);
+      const total = graphemes.length;
+      const { diff } = this.config;
+      if (total < 2) {
+        if (this._handleError(`\u5272\u6CE8\u306F\u5408\u8A082\u6587\u5B57\u4EE5\u4E0A\u5FC5\u8981\u3067\u3059: "${content}"`))
+          return total;
+      }
+      const pipeIndex = content.indexOf("\uFF5C");
+      if (pipeIndex !== -1) {
+        const l1 = this.getGraphemes(content.slice(0, pipeIndex)).length;
+        const l2 = total - 1 - l1;
+        if (l1 > 0 && l2 > 0)
+          return pipeIndex;
+        if (this._handleError("\u5272\u6CE8\u306E\u7247\u65B9\u306E\u884C\u304C\u7A7A\u3067\u3059\u3002"))
+          return total;
+        return this._getSplitPoint(content.replace("\uFF5C", ""));
+      }
+      const segments = Array.from(this.segmenterWord.segment(content));
+      for (const seg of segments) {
+        if (seg.index === 0 || seg.index === content.length)
+          continue;
+        const prefixCount = this.getGraphemes(content.slice(0, seg.index)).length;
+        const suffixCount = total - prefixCount;
+        if (prefixCount > 0 && suffixCount > 0 && Math.abs(prefixCount - suffixCount) <= diff) {
+          return seg.index;
+        }
+      }
+      const splitPos = Math.ceil(total / 2);
+      return graphemes.slice(0, splitPos).join("").length;
+    }
+    parse(text) {
+      const { sign, copyable, align1, align2, narrowSign } = this.config;
+      const regex = /\u3014(.+?)\u3015/g;
+      return text.replace(regex, (_, rawContent) => {
+        const splitAt = this._getSplitPoint(rawContent);
+        const content = rawContent.replace("\uFF5C", "");
+        const line1 = content.slice(0, splitAt);
+        const line2 = content.slice(splitAt);
+        const signs = sign ? Array.from(this.segmenterGrapheme.segment(sign)).map((s) => s.segment) : [];
+        const hasSign = signs.length >= 2;
+        const copyAttr = copyable ? "" : ' aria-hidden="true" style="user-select:none;"';
+        const bCls = `warichu-bracket${narrowSign ? " is-narrow" : ""}`;
+        const open = hasSign ? `<span class="${bCls}"${copyAttr}>${signs[0]}</span>` : "";
+        const close = hasSign ? `<span class="${bCls}"${copyAttr}>${signs[1]}</span>` : "";
+        return `<span class="warichu-container">${open}<span class="warichu-content">` + `<span class="warichu-line1" style="text-align-last: ${align1};">${line1}</span>` + `<span class="warichu-line2" style="text-align-last: ${align2};">${line2}</span>` + `</span>${close}</span>`;
+      });
+    }
+  }
+  if (typeof globalThis !== "undefined") {
+    globalThis["Warichu"] = Warichu;
+  }
+  if (typeof window !== "undefined") {
+    window["Warichu"] = Warichu;
+  }
+})();

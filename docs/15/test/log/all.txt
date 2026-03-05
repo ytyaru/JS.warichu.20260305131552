@@ -5,116 +5,116 @@ bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
 (pass) 検証：./src/js/warichu.ts > 【ロジック】手動分割（｜）が正しく動作すること [7.09ms]
-(pass) 検証：./src/js/warichu.ts > 【ロジック】自動分割が期待通り中央付近で分かれること [3.68ms]
-(pass) 検証：./src/js/warichu.ts > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.65ms]
-(pass) 検証：./src/js/warichu.ts > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.41ms]
-(pass) 検証：./src/js/warichu.ts > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.37ms]
-(pass) 検証：./src/js/warichu.ts > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.52ms]
-(pass) 検証：./src/js/warichu.ts > 【環境】自動分割の限界とフォールバックの確認 [0.49ms]
+(pass) 検証：./src/js/warichu.ts > 【ロジック】自動分割が期待通り中央付近で分かれること [3.73ms]
+(pass) 検証：./src/js/warichu.ts > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.64ms]
+(pass) 検証：./src/js/warichu.ts > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.42ms]
+(pass) 検証：./src/js/warichu.ts > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.34ms]
+(pass) 検証：./src/js/warichu.ts > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.57ms]
+(pass) 検証：./src/js/warichu.ts > 【環境】自動分割の限界とフォールバックの確認 [0.48ms]
 (pass) 検証：./src/js/warichu.ts > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.28ms]
 
  8 pass
  0 fail
  16 expect() calls
-Ran 8 tests across 1 file. [96.00ms]
+Ran 8 tests across 1 file. [97.00ms]
 === 2. ビルド済み全27ファイルの網羅検証 ===
 検証中: ./dist/js/bun/esm/debug.js
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/bun/esm/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.15ms]
-(pass) 検証：./dist/js/bun/esm/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.77ms]
-(pass) 検証：./dist/js/bun/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.70ms]
-(pass) 検証：./dist/js/bun/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.48ms]
-(pass) 検証：./dist/js/bun/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.38ms]
-(pass) 検証：./dist/js/bun/esm/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.59ms]
-(pass) 検証：./dist/js/bun/esm/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.53ms]
+(pass) 検証：./dist/js/bun/esm/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.19ms]
+(pass) 検証：./dist/js/bun/esm/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.78ms]
+(pass) 検証：./dist/js/bun/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.69ms]
+(pass) 検証：./dist/js/bun/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.44ms]
+(pass) 検証：./dist/js/bun/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.36ms]
+(pass) 検証：./dist/js/bun/esm/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.54ms]
+(pass) 検証：./dist/js/bun/esm/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.57ms]
 (pass) 検証：./dist/js/bun/esm/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
 
  8 pass
  0 fail
  16 expect() calls
-Ran 8 tests across 1 file. [107.00ms]
+Ran 8 tests across 1 file. [95.00ms]
 検証中: ./dist/js/bun/esm/code.js
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/bun/esm/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.06ms]
-(pass) 検証：./dist/js/bun/esm/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.72ms]
-(pass) 検証：./dist/js/bun/esm/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.64ms]
-(pass) 検証：./dist/js/bun/esm/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.51ms]
+(pass) 検証：./dist/js/bun/esm/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.07ms]
+(pass) 検証：./dist/js/bun/esm/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.68ms]
+(pass) 検証：./dist/js/bun/esm/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.66ms]
+(pass) 検証：./dist/js/bun/esm/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.45ms]
 (pass) 検証：./dist/js/bun/esm/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.40ms]
-(pass) 検証：./dist/js/bun/esm/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.54ms]
-(pass) 検証：./dist/js/bun/esm/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.48ms]
-(pass) 検証：./dist/js/bun/esm/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.28ms]
-
- 8 pass
- 0 fail
- 16 expect() calls
-Ran 8 tests across 1 file. [93.00ms]
-検証中: ./dist/js/bun/esm/min.js
-bun test v1.3.5 (1e86cebd)
-
-test/js/warichu.ts:
-(pass) 検証：./dist/js/bun/esm/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.01ms]
-(pass) 検証：./dist/js/bun/esm/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.72ms]
-(pass) 検証：./dist/js/bun/esm/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.66ms]
-(pass) 検証：./dist/js/bun/esm/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.47ms]
-(pass) 検証：./dist/js/bun/esm/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.35ms]
-(pass) 検証：./dist/js/bun/esm/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
-(pass) 検証：./dist/js/bun/esm/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.60ms]
-(pass) 検証：./dist/js/bun/esm/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.24ms]
+(pass) 検証：./dist/js/bun/esm/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.50ms]
+(pass) 検証：./dist/js/bun/esm/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.49ms]
+(pass) 検証：./dist/js/bun/esm/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.26ms]
 
  8 pass
  0 fail
  16 expect() calls
 Ran 8 tests across 1 file. [95.00ms]
+検証中: ./dist/js/bun/esm/min.js
+bun test v1.3.5 (1e86cebd)
+
+test/js/warichu.ts:
+(pass) 検証：./dist/js/bun/esm/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.05ms]
+(pass) 検証：./dist/js/bun/esm/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.66ms]
+(pass) 検証：./dist/js/bun/esm/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.65ms]
+(pass) 検証：./dist/js/bun/esm/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.41ms]
+(pass) 検証：./dist/js/bun/esm/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.43ms]
+(pass) 検証：./dist/js/bun/esm/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.54ms]
+(pass) 検証：./dist/js/bun/esm/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.48ms]
+(pass) 検証：./dist/js/bun/esm/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
+
+ 8 pass
+ 0 fail
+ 16 expect() calls
+Ran 8 tests across 1 file. [99.00ms]
 検証中: ./dist/js/bun/no-esm/debug.js
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/bun/no-esm/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.36ms]
-(pass) 検証：./dist/js/bun/no-esm/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.66ms]
-(pass) 検証：./dist/js/bun/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.64ms]
-(pass) 検証：./dist/js/bun/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.43ms]
-(pass) 検証：./dist/js/bun/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.37ms]
+(pass) 検証：./dist/js/bun/no-esm/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.43ms]
+(pass) 検証：./dist/js/bun/no-esm/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.56ms]
+(pass) 検証：./dist/js/bun/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.71ms]
+(pass) 検証：./dist/js/bun/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.42ms]
+(pass) 検証：./dist/js/bun/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.36ms]
 (pass) 検証：./dist/js/bun/no-esm/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
-(pass) 検証：./dist/js/bun/no-esm/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.50ms]
-(pass) 検証：./dist/js/bun/no-esm/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
+(pass) 検証：./dist/js/bun/no-esm/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.51ms]
+(pass) 検証：./dist/js/bun/no-esm/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.26ms]
 
  8 pass
  0 fail
  16 expect() calls
-Ran 8 tests across 1 file. [91.00ms]
+Ran 8 tests across 1 file. [90.00ms]
 検証中: ./dist/js/bun/no-esm/code.js
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/bun/no-esm/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.27ms]
-(pass) 検証：./dist/js/bun/no-esm/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.63ms]
-(pass) 検証：./dist/js/bun/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.67ms]
-(pass) 検証：./dist/js/bun/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.43ms]
-(pass) 検証：./dist/js/bun/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.42ms]
-(pass) 検証：./dist/js/bun/no-esm/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.52ms]
-(pass) 検証：./dist/js/bun/no-esm/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.59ms]
-(pass) 検証：./dist/js/bun/no-esm/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.28ms]
+(pass) 検証：./dist/js/bun/no-esm/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.64ms]
+(pass) 検証：./dist/js/bun/no-esm/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.89ms]
+(pass) 検証：./dist/js/bun/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.66ms]
+(pass) 検証：./dist/js/bun/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.44ms]
+(pass) 検証：./dist/js/bun/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.40ms]
+(pass) 検証：./dist/js/bun/no-esm/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
+(pass) 検証：./dist/js/bun/no-esm/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.47ms]
+(pass) 検証：./dist/js/bun/no-esm/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.32ms]
 
  8 pass
  0 fail
  16 expect() calls
-Ran 8 tests across 1 file. [98.00ms]
+Ran 8 tests across 1 file. [94.00ms]
 検証中: ./dist/js/bun/no-esm/min.js
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/bun/no-esm/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.16ms]
-(pass) 検証：./dist/js/bun/no-esm/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.67ms]
-(pass) 検証：./dist/js/bun/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.82ms]
-(pass) 検証：./dist/js/bun/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.45ms]
-(pass) 検証：./dist/js/bun/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.39ms]
-(pass) 検証：./dist/js/bun/no-esm/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.54ms]
+(pass) 検証：./dist/js/bun/no-esm/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.22ms]
+(pass) 検証：./dist/js/bun/no-esm/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.74ms]
+(pass) 検証：./dist/js/bun/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.67ms]
+(pass) 検証：./dist/js/bun/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.49ms]
+(pass) 検証：./dist/js/bun/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.41ms]
+(pass) 検証：./dist/js/bun/no-esm/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.50ms]
 (pass) 検証：./dist/js/bun/no-esm/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.51ms]
-(pass) 検証：./dist/js/bun/no-esm/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.28ms]
+(pass) 検証：./dist/js/bun/no-esm/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.31ms]
 
  8 pass
  0 fail
@@ -124,116 +124,116 @@ Ran 8 tests across 1 file. [91.00ms]
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/bun/script/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [6.95ms]
-(pass) 検証：./dist/js/bun/script/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.66ms]
-(pass) 検証：./dist/js/bun/script/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.69ms]
-(pass) 検証：./dist/js/bun/script/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.41ms]
-(pass) 検証：./dist/js/bun/script/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.35ms]
-(pass) 検証：./dist/js/bun/script/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.56ms]
-(pass) 検証：./dist/js/bun/script/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.49ms]
-(pass) 検証：./dist/js/bun/script/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.28ms]
-
- 8 pass
- 0 fail
- 16 expect() calls
-Ran 8 tests across 1 file. [95.00ms]
-検証中: ./dist/js/bun/script/code.js
-bun test v1.3.5 (1e86cebd)
-
-test/js/warichu.ts:
-(pass) 検証：./dist/js/bun/script/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.23ms]
-(pass) 検証：./dist/js/bun/script/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [7.51ms]
-(pass) 検証：./dist/js/bun/script/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [1.34ms]
-(pass) 検証：./dist/js/bun/script/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.88ms]
-(pass) 検証：./dist/js/bun/script/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.88ms]
-(pass) 検証：./dist/js/bun/script/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [1.53ms]
-(pass) 検証：./dist/js/bun/script/code.js > 【環境】自動分割の限界とフォールバックの確認 [1.31ms]
-(pass) 検証：./dist/js/bun/script/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.64ms]
-
- 8 pass
- 0 fail
- 16 expect() calls
-Ran 8 tests across 1 file. [99.00ms]
-検証中: ./dist/js/bun/script/min.js
-bun test v1.3.5 (1e86cebd)
-
-test/js/warichu.ts:
-(pass) 検証：./dist/js/bun/script/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.09ms]
-(pass) 検証：./dist/js/bun/script/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.59ms]
-(pass) 検証：./dist/js/bun/script/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.75ms]
-(pass) 検証：./dist/js/bun/script/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.43ms]
-(pass) 検証：./dist/js/bun/script/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.37ms]
-(pass) 検証：./dist/js/bun/script/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.53ms]
-(pass) 検証：./dist/js/bun/script/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.49ms]
-(pass) 検証：./dist/js/bun/script/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.33ms]
-
- 8 pass
- 0 fail
- 16 expect() calls
-Ran 8 tests across 1 file. [124.00ms]
-検証中: ./dist/js/browser/esm/debug.js
-bun test v1.3.5 (1e86cebd)
-
-test/js/warichu.ts:
-(pass) 検証：./dist/js/browser/esm/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.08ms]
-(pass) 検証：./dist/js/browser/esm/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.63ms]
-(pass) 検証：./dist/js/browser/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.64ms]
-(pass) 検証：./dist/js/browser/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.42ms]
-(pass) 検証：./dist/js/browser/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.35ms]
-(pass) 検証：./dist/js/browser/esm/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.50ms]
-(pass) 検証：./dist/js/browser/esm/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.50ms]
-(pass) 検証：./dist/js/browser/esm/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
-
- 8 pass
- 0 fail
- 16 expect() calls
-Ran 8 tests across 1 file. [100.00ms]
-検証中: ./dist/js/browser/esm/code.js
-bun test v1.3.5 (1e86cebd)
-
-test/js/warichu.ts:
-(pass) 検証：./dist/js/browser/esm/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.03ms]
-(pass) 検証：./dist/js/browser/esm/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.72ms]
-(pass) 検証：./dist/js/browser/esm/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.64ms]
-(pass) 検証：./dist/js/browser/esm/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.42ms]
-(pass) 検証：./dist/js/browser/esm/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.34ms]
-(pass) 検証：./dist/js/browser/esm/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.49ms]
-(pass) 検証：./dist/js/browser/esm/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.55ms]
-(pass) 検証：./dist/js/browser/esm/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
+(pass) 検証：./dist/js/bun/script/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.27ms]
+(pass) 検証：./dist/js/bun/script/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.61ms]
+(pass) 検証：./dist/js/bun/script/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.72ms]
+(pass) 検証：./dist/js/bun/script/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.40ms]
+(pass) 検証：./dist/js/bun/script/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.33ms]
+(pass) 検証：./dist/js/bun/script/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
+(pass) 検証：./dist/js/bun/script/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.50ms]
+(pass) 検証：./dist/js/bun/script/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
 
  8 pass
  0 fail
  16 expect() calls
 Ran 8 tests across 1 file. [94.00ms]
-検証中: ./dist/js/browser/esm/min.js
+検証中: ./dist/js/bun/script/code.js
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/browser/esm/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.01ms]
-(pass) 検証：./dist/js/browser/esm/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.82ms]
-(pass) 検証：./dist/js/browser/esm/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.71ms]
-(pass) 検証：./dist/js/browser/esm/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.46ms]
-(pass) 検証：./dist/js/browser/esm/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.39ms]
-(pass) 検証：./dist/js/browser/esm/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.59ms]
-(pass) 検証：./dist/js/browser/esm/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.54ms]
-(pass) 検証：./dist/js/browser/esm/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
+(pass) 検証：./dist/js/bun/script/code.js > 【ロジック】手動分割（｜）が正しく動作すること [6.95ms]
+(pass) 検証：./dist/js/bun/script/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.66ms]
+(pass) 検証：./dist/js/bun/script/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.68ms]
+(pass) 検証：./dist/js/bun/script/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.41ms]
+(pass) 検証：./dist/js/bun/script/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.44ms]
+(pass) 検証：./dist/js/bun/script/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.52ms]
+(pass) 検証：./dist/js/bun/script/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.48ms]
+(pass) 検証：./dist/js/bun/script/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.29ms]
 
  8 pass
  0 fail
  16 expect() calls
-Ran 8 tests across 1 file. [105.00ms]
+Ran 8 tests across 1 file. [89.00ms]
+検証中: ./dist/js/bun/script/min.js
+bun test v1.3.5 (1e86cebd)
+
+test/js/warichu.ts:
+(pass) 検証：./dist/js/bun/script/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.00ms]
+(pass) 検証：./dist/js/bun/script/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.67ms]
+(pass) 検証：./dist/js/bun/script/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.74ms]
+(pass) 検証：./dist/js/bun/script/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.42ms]
+(pass) 検証：./dist/js/bun/script/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.35ms]
+(pass) 検証：./dist/js/bun/script/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
+(pass) 検証：./dist/js/bun/script/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.49ms]
+(pass) 検証：./dist/js/bun/script/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
+
+ 8 pass
+ 0 fail
+ 16 expect() calls
+Ran 8 tests across 1 file. [89.00ms]
+検証中: ./dist/js/browser/esm/debug.js
+bun test v1.3.5 (1e86cebd)
+
+test/js/warichu.ts:
+(pass) 検証：./dist/js/browser/esm/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.10ms]
+(pass) 検証：./dist/js/browser/esm/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.74ms]
+(pass) 検証：./dist/js/browser/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.64ms]
+(pass) 検証：./dist/js/browser/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.43ms]
+(pass) 検証：./dist/js/browser/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.34ms]
+(pass) 検証：./dist/js/browser/esm/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.49ms]
+(pass) 検証：./dist/js/browser/esm/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.54ms]
+(pass) 検証：./dist/js/browser/esm/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
+
+ 8 pass
+ 0 fail
+ 16 expect() calls
+Ran 8 tests across 1 file. [94.00ms]
+検証中: ./dist/js/browser/esm/code.js
+bun test v1.3.5 (1e86cebd)
+
+test/js/warichu.ts:
+(pass) 検証：./dist/js/browser/esm/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.19ms]
+(pass) 検証：./dist/js/browser/esm/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.66ms]
+(pass) 検証：./dist/js/browser/esm/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.67ms]
+(pass) 検証：./dist/js/browser/esm/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.49ms]
+(pass) 検証：./dist/js/browser/esm/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.41ms]
+(pass) 検証：./dist/js/browser/esm/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
+(pass) 検証：./dist/js/browser/esm/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.53ms]
+(pass) 検証：./dist/js/browser/esm/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.28ms]
+
+ 8 pass
+ 0 fail
+ 16 expect() calls
+Ran 8 tests across 1 file. [97.00ms]
+検証中: ./dist/js/browser/esm/min.js
+bun test v1.3.5 (1e86cebd)
+
+test/js/warichu.ts:
+(pass) 検証：./dist/js/browser/esm/min.js > 【ロジック】手動分割（｜）が正しく動作すること [6.93ms]
+(pass) 検証：./dist/js/browser/esm/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.68ms]
+(pass) 検証：./dist/js/browser/esm/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.68ms]
+(pass) 検証：./dist/js/browser/esm/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.51ms]
+(pass) 検証：./dist/js/browser/esm/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.37ms]
+(pass) 検証：./dist/js/browser/esm/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
+(pass) 検証：./dist/js/browser/esm/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.47ms]
+(pass) 検証：./dist/js/browser/esm/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.26ms]
+
+ 8 pass
+ 0 fail
+ 16 expect() calls
+Ran 8 tests across 1 file. [100.00ms]
 検証中: ./dist/js/browser/no-esm/debug.js
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/browser/no-esm/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.32ms]
-(pass) 検証：./dist/js/browser/no-esm/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.63ms]
-(pass) 検証：./dist/js/browser/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.68ms]
-(pass) 検証：./dist/js/browser/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.45ms]
-(pass) 検証：./dist/js/browser/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.35ms]
-(pass) 検証：./dist/js/browser/no-esm/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
-(pass) 検証：./dist/js/browser/no-esm/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.52ms]
-(pass) 検証：./dist/js/browser/no-esm/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
+(pass) 検証：./dist/js/browser/no-esm/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.31ms]
+(pass) 検証：./dist/js/browser/no-esm/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.62ms]
+(pass) 検証：./dist/js/browser/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.70ms]
+(pass) 検証：./dist/js/browser/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.43ms]
+(pass) 検証：./dist/js/browser/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.34ms]
+(pass) 検証：./dist/js/browser/no-esm/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.50ms]
+(pass) 検証：./dist/js/browser/no-esm/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.51ms]
+(pass) 検証：./dist/js/browser/no-esm/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.26ms]
 
  8 pass
  0 fail
@@ -243,48 +243,48 @@ Ran 8 tests across 1 file. [90.00ms]
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/browser/no-esm/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.38ms]
-(pass) 検証：./dist/js/browser/no-esm/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.63ms]
+(pass) 検証：./dist/js/browser/no-esm/code.js > 【ロジック】手動分割（｜）が正しく動作すること [9.02ms]
+(pass) 検証：./dist/js/browser/no-esm/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.68ms]
 (pass) 検証：./dist/js/browser/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.67ms]
-(pass) 検証：./dist/js/browser/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.43ms]
-(pass) 検証：./dist/js/browser/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.35ms]
-(pass) 検証：./dist/js/browser/no-esm/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
-(pass) 検証：./dist/js/browser/no-esm/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.50ms]
-(pass) 検証：./dist/js/browser/no-esm/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.30ms]
-
- 8 pass
- 0 fail
- 16 expect() calls
-Ran 8 tests across 1 file. [93.00ms]
-検証中: ./dist/js/browser/no-esm/min.js
-bun test v1.3.5 (1e86cebd)
-
-test/js/warichu.ts:
-(pass) 検証：./dist/js/browser/no-esm/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.16ms]
-(pass) 検証：./dist/js/browser/no-esm/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.69ms]
-(pass) 検証：./dist/js/browser/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.65ms]
-(pass) 検証：./dist/js/browser/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.42ms]
-(pass) 検証：./dist/js/browser/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.36ms]
-(pass) 検証：./dist/js/browser/no-esm/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.56ms]
-(pass) 検証：./dist/js/browser/no-esm/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.51ms]
-(pass) 検証：./dist/js/browser/no-esm/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.25ms]
+(pass) 検証：./dist/js/browser/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.40ms]
+(pass) 検証：./dist/js/browser/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.41ms]
+(pass) 検証：./dist/js/browser/no-esm/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.61ms]
+(pass) 検証：./dist/js/browser/no-esm/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.52ms]
+(pass) 検証：./dist/js/browser/no-esm/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.29ms]
 
  8 pass
  0 fail
  16 expect() calls
 Ran 8 tests across 1 file. [91.00ms]
+検証中: ./dist/js/browser/no-esm/min.js
+bun test v1.3.5 (1e86cebd)
+
+test/js/warichu.ts:
+(pass) 検証：./dist/js/browser/no-esm/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.18ms]
+(pass) 検証：./dist/js/browser/no-esm/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.62ms]
+(pass) 検証：./dist/js/browser/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.70ms]
+(pass) 検証：./dist/js/browser/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.44ms]
+(pass) 検証：./dist/js/browser/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.37ms]
+(pass) 検証：./dist/js/browser/no-esm/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.50ms]
+(pass) 検証：./dist/js/browser/no-esm/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.56ms]
+(pass) 検証：./dist/js/browser/no-esm/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.28ms]
+
+ 8 pass
+ 0 fail
+ 16 expect() calls
+Ran 8 tests across 1 file. [90.00ms]
 検証中: ./dist/js/browser/script/debug.js
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/browser/script/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.18ms]
-(pass) 検証：./dist/js/browser/script/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.63ms]
-(pass) 検証：./dist/js/browser/script/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.65ms]
-(pass) 検証：./dist/js/browser/script/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.40ms]
-(pass) 検証：./dist/js/browser/script/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.37ms]
+(pass) 検証：./dist/js/browser/script/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.08ms]
+(pass) 検証：./dist/js/browser/script/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.68ms]
+(pass) 検証：./dist/js/browser/script/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.69ms]
+(pass) 検証：./dist/js/browser/script/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.41ms]
+(pass) 検証：./dist/js/browser/script/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.36ms]
 (pass) 検証：./dist/js/browser/script/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.52ms]
-(pass) 検証：./dist/js/browser/script/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.50ms]
-(pass) 検証：./dist/js/browser/script/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
+(pass) 検証：./dist/js/browser/script/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.56ms]
+(pass) 検証：./dist/js/browser/script/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.28ms]
 
  8 pass
  0 fail
@@ -294,167 +294,167 @@ Ran 8 tests across 1 file. [91.00ms]
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/browser/script/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.14ms]
-(pass) 検証：./dist/js/browser/script/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.63ms]
-(pass) 検証：./dist/js/browser/script/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.71ms]
-(pass) 検証：./dist/js/browser/script/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.41ms]
-(pass) 検証：./dist/js/browser/script/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.34ms]
-(pass) 検証：./dist/js/browser/script/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.50ms]
-(pass) 検証：./dist/js/browser/script/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.51ms]
-(pass) 検証：./dist/js/browser/script/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.32ms]
+(pass) 検証：./dist/js/browser/script/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.24ms]
+(pass) 検証：./dist/js/browser/script/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.60ms]
+(pass) 検証：./dist/js/browser/script/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.76ms]
+(pass) 検証：./dist/js/browser/script/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.43ms]
+(pass) 検証：./dist/js/browser/script/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.35ms]
+(pass) 検証：./dist/js/browser/script/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.52ms]
+(pass) 検証：./dist/js/browser/script/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.49ms]
+(pass) 検証：./dist/js/browser/script/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
 
  8 pass
  0 fail
  16 expect() calls
-Ran 8 tests across 1 file. [93.00ms]
+Ran 8 tests across 1 file. [91.00ms]
 検証中: ./dist/js/browser/script/min.js
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/browser/script/min.js > 【ロジック】手動分割（｜）が正しく動作すること [9.23ms]
-(pass) 検証：./dist/js/browser/script/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.61ms]
-(pass) 検証：./dist/js/browser/script/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.71ms]
-(pass) 検証：./dist/js/browser/script/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.42ms]
+(pass) 検証：./dist/js/browser/script/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.08ms]
+(pass) 検証：./dist/js/browser/script/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.66ms]
+(pass) 検証：./dist/js/browser/script/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.66ms]
+(pass) 検証：./dist/js/browser/script/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.43ms]
 (pass) 検証：./dist/js/browser/script/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.34ms]
-(pass) 検証：./dist/js/browser/script/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.53ms]
-(pass) 検証：./dist/js/browser/script/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.53ms]
-(pass) 検証：./dist/js/browser/script/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
+(pass) 検証：./dist/js/browser/script/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.56ms]
+(pass) 検証：./dist/js/browser/script/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.50ms]
+(pass) 検証：./dist/js/browser/script/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.26ms]
 
  8 pass
  0 fail
  16 expect() calls
-Ran 8 tests across 1 file. [92.00ms]
+Ran 8 tests across 1 file. [94.00ms]
 検証中: ./dist/js/node/esm/debug.js
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/node/esm/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.08ms]
-(pass) 検証：./dist/js/node/esm/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.76ms]
-(pass) 検証：./dist/js/node/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.74ms]
-(pass) 検証：./dist/js/node/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.74ms]
-(pass) 検証：./dist/js/node/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.43ms]
-(pass) 検証：./dist/js/node/esm/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
-(pass) 検証：./dist/js/node/esm/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.46ms]
-(pass) 検証：./dist/js/node/esm/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.28ms]
-
- 8 pass
- 0 fail
- 16 expect() calls
-Ran 8 tests across 1 file. [98.00ms]
-検証中: ./dist/js/node/esm/code.js
-bun test v1.3.5 (1e86cebd)
-
-test/js/warichu.ts:
-(pass) 検証：./dist/js/node/esm/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.38ms]
-(pass) 検証：./dist/js/node/esm/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.74ms]
-(pass) 検証：./dist/js/node/esm/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.64ms]
-(pass) 検証：./dist/js/node/esm/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.44ms]
-(pass) 検証：./dist/js/node/esm/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.36ms]
-(pass) 検証：./dist/js/node/esm/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
-(pass) 検証：./dist/js/node/esm/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.49ms]
-(pass) 検証：./dist/js/node/esm/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.33ms]
-
- 8 pass
- 0 fail
- 16 expect() calls
-Ran 8 tests across 1 file. [97.00ms]
-検証中: ./dist/js/node/esm/min.js
-bun test v1.3.5 (1e86cebd)
-
-test/js/warichu.ts:
-(pass) 検証：./dist/js/node/esm/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.04ms]
-(pass) 検証：./dist/js/node/esm/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.78ms]
-(pass) 検証：./dist/js/node/esm/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.72ms]
-(pass) 検証：./dist/js/node/esm/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.45ms]
-(pass) 検証：./dist/js/node/esm/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.34ms]
-(pass) 検証：./dist/js/node/esm/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.50ms]
-(pass) 検証：./dist/js/node/esm/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.45ms]
-(pass) 検証：./dist/js/node/esm/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.29ms]
+(pass) 検証：./dist/js/node/esm/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.11ms]
+(pass) 検証：./dist/js/node/esm/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.65ms]
+(pass) 検証：./dist/js/node/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.64ms]
+(pass) 検証：./dist/js/node/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.45ms]
+(pass) 検証：./dist/js/node/esm/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.42ms]
+(pass) 検証：./dist/js/node/esm/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.53ms]
+(pass) 検証：./dist/js/node/esm/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.48ms]
+(pass) 検証：./dist/js/node/esm/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
 
  8 pass
  0 fail
  16 expect() calls
 Ran 8 tests across 1 file. [95.00ms]
+検証中: ./dist/js/node/esm/code.js
+bun test v1.3.5 (1e86cebd)
+
+test/js/warichu.ts:
+(pass) 検証：./dist/js/node/esm/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.15ms]
+(pass) 検証：./dist/js/node/esm/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.73ms]
+(pass) 検証：./dist/js/node/esm/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.64ms]
+(pass) 検証：./dist/js/node/esm/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.43ms]
+(pass) 検証：./dist/js/node/esm/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.35ms]
+(pass) 検証：./dist/js/node/esm/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.50ms]
+(pass) 検証：./dist/js/node/esm/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.47ms]
+(pass) 検証：./dist/js/node/esm/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
+
+ 8 pass
+ 0 fail
+ 16 expect() calls
+Ran 8 tests across 1 file. [95.00ms]
+検証中: ./dist/js/node/esm/min.js
+bun test v1.3.5 (1e86cebd)
+
+test/js/warichu.ts:
+(pass) 検証：./dist/js/node/esm/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.30ms]
+(pass) 検証：./dist/js/node/esm/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.68ms]
+(pass) 検証：./dist/js/node/esm/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.66ms]
+(pass) 検証：./dist/js/node/esm/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.44ms]
+(pass) 検証：./dist/js/node/esm/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.35ms]
+(pass) 検証：./dist/js/node/esm/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
+(pass) 検証：./dist/js/node/esm/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.64ms]
+(pass) 検証：./dist/js/node/esm/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.31ms]
+
+ 8 pass
+ 0 fail
+ 16 expect() calls
+Ran 8 tests across 1 file. [98.00ms]
 検証中: ./dist/js/node/no-esm/debug.js
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/node/no-esm/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.26ms]
-(pass) 検証：./dist/js/node/no-esm/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.61ms]
-(pass) 検証：./dist/js/node/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.67ms]
-(pass) 検証：./dist/js/node/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.43ms]
-(pass) 検証：./dist/js/node/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.36ms]
-(pass) 検証：./dist/js/node/no-esm/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
-(pass) 検証：./dist/js/node/no-esm/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.51ms]
-(pass) 検証：./dist/js/node/no-esm/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.26ms]
+(pass) 検証：./dist/js/node/no-esm/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.22ms]
+(pass) 検証：./dist/js/node/no-esm/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.83ms]
+(pass) 検証：./dist/js/node/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.66ms]
+(pass) 検証：./dist/js/node/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.49ms]
+(pass) 検証：./dist/js/node/no-esm/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.37ms]
+(pass) 検証：./dist/js/node/no-esm/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.55ms]
+(pass) 検証：./dist/js/node/no-esm/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.50ms]
+(pass) 検証：./dist/js/node/no-esm/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
 
  8 pass
  0 fail
  16 expect() calls
-Ran 8 tests across 1 file. [88.00ms]
+Ran 8 tests across 1 file. [98.00ms]
 検証中: ./dist/js/node/no-esm/code.js
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/node/no-esm/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.22ms]
-(pass) 検証：./dist/js/node/no-esm/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.60ms]
-(pass) 検証：./dist/js/node/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.65ms]
-(pass) 検証：./dist/js/node/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.47ms]
-(pass) 検証：./dist/js/node/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.38ms]
-(pass) 検証：./dist/js/node/no-esm/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
-(pass) 検証：./dist/js/node/no-esm/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.51ms]
-(pass) 検証：./dist/js/node/no-esm/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.26ms]
-
- 8 pass
- 0 fail
- 16 expect() calls
-Ran 8 tests across 1 file. [92.00ms]
-検証中: ./dist/js/node/no-esm/min.js
-bun test v1.3.5 (1e86cebd)
-
-test/js/warichu.ts:
-(pass) 検証：./dist/js/node/no-esm/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.19ms]
-(pass) 検証：./dist/js/node/no-esm/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.69ms]
-(pass) 検証：./dist/js/node/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.66ms]
-(pass) 検証：./dist/js/node/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.42ms]
-(pass) 検証：./dist/js/node/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.58ms]
-(pass) 検証：./dist/js/node/no-esm/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.55ms]
-(pass) 検証：./dist/js/node/no-esm/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.53ms]
-(pass) 検証：./dist/js/node/no-esm/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
-
- 8 pass
- 0 fail
- 16 expect() calls
-Ran 8 tests across 1 file. [93.00ms]
-検証中: ./dist/js/node/script/debug.js
-bun test v1.3.5 (1e86cebd)
-
-test/js/warichu.ts:
-(pass) 検証：./dist/js/node/script/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [7.28ms]
-(pass) 検証：./dist/js/node/script/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [4.07ms]
-(pass) 検証：./dist/js/node/script/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.71ms]
-(pass) 検証：./dist/js/node/script/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.43ms]
-(pass) 検証：./dist/js/node/script/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.35ms]
-(pass) 検証：./dist/js/node/script/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
-(pass) 検証：./dist/js/node/script/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.47ms]
-(pass) 検証：./dist/js/node/script/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.28ms]
+(pass) 検証：./dist/js/node/no-esm/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.31ms]
+(pass) 検証：./dist/js/node/no-esm/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [4.05ms]
+(pass) 検証：./dist/js/node/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.87ms]
+(pass) 検証：./dist/js/node/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.72ms]
+(pass) 検証：./dist/js/node/no-esm/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.49ms]
+(pass) 検証：./dist/js/node/no-esm/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.55ms]
+(pass) 検証：./dist/js/node/no-esm/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.50ms]
+(pass) 検証：./dist/js/node/no-esm/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.32ms]
 
  8 pass
  0 fail
  16 expect() calls
 Ran 8 tests across 1 file. [90.00ms]
+検証中: ./dist/js/node/no-esm/min.js
+bun test v1.3.5 (1e86cebd)
+
+test/js/warichu.ts:
+(pass) 検証：./dist/js/node/no-esm/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.21ms]
+(pass) 検証：./dist/js/node/no-esm/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.67ms]
+(pass) 検証：./dist/js/node/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.65ms]
+(pass) 検証：./dist/js/node/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.42ms]
+(pass) 検証：./dist/js/node/no-esm/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.39ms]
+(pass) 検証：./dist/js/node/no-esm/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.51ms]
+(pass) 検証：./dist/js/node/no-esm/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.56ms]
+(pass) 検証：./dist/js/node/no-esm/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.28ms]
+
+ 8 pass
+ 0 fail
+ 16 expect() calls
+Ran 8 tests across 1 file. [90.00ms]
+検証中: ./dist/js/node/script/debug.js
+bun test v1.3.5 (1e86cebd)
+
+test/js/warichu.ts:
+(pass) 検証：./dist/js/node/script/debug.js > 【ロジック】手動分割（｜）が正しく動作すること [8.18ms]
+(pass) 検証：./dist/js/node/script/debug.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.72ms]
+(pass) 検証：./dist/js/node/script/debug.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.70ms]
+(pass) 検証：./dist/js/node/script/debug.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.45ms]
+(pass) 検証：./dist/js/node/script/debug.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.38ms]
+(pass) 検証：./dist/js/node/script/debug.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.52ms]
+(pass) 検証：./dist/js/node/script/debug.js > 【環境】自動分割の限界とフォールバックの確認 [0.53ms]
+(pass) 検証：./dist/js/node/script/debug.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.29ms]
+
+ 8 pass
+ 0 fail
+ 16 expect() calls
+Ran 8 tests across 1 file. [94.00ms]
 検証中: ./dist/js/node/script/code.js
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/node/script/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.93ms]
-(pass) 検証：./dist/js/node/script/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.95ms]
-(pass) 検証：./dist/js/node/script/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.71ms]
-(pass) 検証：./dist/js/node/script/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.42ms]
-(pass) 検証：./dist/js/node/script/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.35ms]
-(pass) 検証：./dist/js/node/script/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.50ms]
-(pass) 検証：./dist/js/node/script/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.54ms]
-(pass) 検証：./dist/js/node/script/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.27ms]
+(pass) 検証：./dist/js/node/script/code.js > 【ロジック】手動分割（｜）が正しく動作すること [7.17ms]
+(pass) 検証：./dist/js/node/script/code.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.66ms]
+(pass) 検証：./dist/js/node/script/code.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.68ms]
+(pass) 検証：./dist/js/node/script/code.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.41ms]
+(pass) 検証：./dist/js/node/script/code.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.45ms]
+(pass) 検証：./dist/js/node/script/code.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.54ms]
+(pass) 検証：./dist/js/node/script/code.js > 【環境】自動分割の限界とフォールバックの確認 [0.50ms]
+(pass) 検証：./dist/js/node/script/code.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.30ms]
 
  8 pass
  0 fail
@@ -464,14 +464,14 @@ Ran 8 tests across 1 file. [93.00ms]
 bun test v1.3.5 (1e86cebd)
 
 test/js/warichu.ts:
-(pass) 検証：./dist/js/node/script/min.js > 【ロジック】手動分割（｜）が正しく動作すること [10.15ms]
-(pass) 検証：./dist/js/node/script/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.63ms]
+(pass) 検証：./dist/js/node/script/min.js > 【ロジック】手動分割（｜）が正しく動作すること [7.13ms]
+(pass) 検証：./dist/js/node/script/min.js > 【ロジック】自動分割が期待通り中央付近で分かれること [3.67ms]
 (pass) 検証：./dist/js/node/script/min.js > 自動分割の言語依存性と限界の検証 > 【成功例】辞書にある常用漢字（東京都）は形態素解析により『東京｜都』と適切に分割されること [0.77ms]
 (pass) 検証：./dist/js/node/script/min.js > 自動分割の言語依存性と限界の検証 > 【既知の限界】サロゲートペア（𠮷等）はブラウザ辞書が未対応のため、Unicode境界判定により不自然な位置（𠮷｜野家）で分割される可能性がある [0.42ms]
-(pass) 検証：./dist/js/node/script/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.38ms]
-(pass) 検証：./dist/js/node/script/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.55ms]
-(pass) 検証：./dist/js/node/script/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.49ms]
-(pass) 検証：./dist/js/node/script/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.29ms]
+(pass) 検証：./dist/js/node/script/min.js > 自動分割の言語依存性と限界の検証 > 【救済策】自動分割が不自然な場合は、パイプ『｜』による手動分割でユーザーの意図（𠮷野｜家）を強制できること [0.34ms]
+(pass) 検証：./dist/js/node/script/min.js > 書記素（Grapheme）カウントの正確性 > サロゲートペアを含む奇数長の文字列が、手動分割なしでも文字化けせず全文字保持されること [0.49ms]
+(pass) 検証：./dist/js/node/script/min.js > 【環境】自動分割の限界とフォールバックの確認 [0.48ms]
+(pass) 検証：./dist/js/node/script/min.js > 【ビルド】公開API 'parse' が難読化されずに呼べること [0.28ms]
 
  8 pass
  0 fail

@@ -1,0 +1,70 @@
+class Q extends Error {
+  constructor(j) {
+    super(j);
+    this.name = "WarichuError";
+  }
+}
+
+class K {
+  config;
+  segmenterWord;
+  segmenterGrapheme;
+  constructor(j = {}) {
+    this.config = { sign: "（）", copyable: true, align1: "start", align2: "start", narrowSign: true, error: "warn", diff: 1, ...j }, this.segmenterWord = new Intl.Segmenter("ja", { granularity: "word" }), this.segmenterGrapheme = new Intl.Segmenter("ja", { granularity: "grapheme" });
+  }
+  getGraphemes(j) {
+    return Array.from(this.segmenterGrapheme.segment(j)).map((k) => k.segment);
+  }
+  _handleError(j) {
+    let { error: k } = this.config;
+    if (k === "throw")
+      throw new Q(j);
+    if (k === "warn")
+      return console.warn(`[Warichu] ${j}`), false;
+    if (typeof k === "function") {
+      if (k.prototype instanceof Error)
+        throw new k(j);
+      return k(j) === true;
+    }
+    return false;
+  }
+  _getSplitPoint(j) {
+    let k = this.getGraphemes(j), q = k.length, { diff: F } = this.config;
+    if (q < 2) {
+      if (this._handleError(`割注は合計2文字以上必要です: "${j}"`))
+        return q;
+    }
+    let B = j.indexOf("｜");
+    if (B !== -1) {
+      let v = this.getGraphemes(j.slice(0, B)).length, z = q - 1 - v;
+      if (v > 0 && z > 0)
+        return B;
+      if (this._handleError("割注の片方の行が空です。"))
+        return q;
+      return this._getSplitPoint(j.replace("｜", ""));
+    }
+    let G = Array.from(this.segmenterWord.segment(j));
+    for (let v of G) {
+      if (v.index === 0 || v.index === j.length)
+        continue;
+      let z = this.getGraphemes(j.slice(0, v.index)).length, D = q - z;
+      if (z > 0 && D > 0 && Math.abs(z - D) <= F)
+        return v.index;
+    }
+    let H = Math.ceil(q / 2);
+    return k.slice(0, H).join("").length;
+  }
+  parse(j) {
+    let { sign: k, copyable: q, align1: F, align2: B, narrowSign: G } = this.config, H = /\u3014(.+?)\u3015/g;
+    return j.replace(H, (v, z) => {
+      let D = this._getSplitPoint(z), L = z.replace("｜", ""), R = L.slice(0, D), T = L.slice(D), J = k ? Array.from(this.segmenterGrapheme.segment(k)).map((X) => X.segment) : [], M = J.length >= 2, N = q ? "" : ' aria-hidden="true" style="user-select:none;"', O = `warichu-bracket${G ? " is-narrow" : ""}`, U = M ? `<span class="${O}"${N}>${J[0]}</span>` : "", V = M ? `<span class="${O}"${N}>${J[1]}</span>` : "";
+      return `<span class="warichu-container">${U}<span class="warichu-content"><span class="warichu-line1" style="text-align-last: ${F};">${R}</span><span class="warichu-line2" style="text-align-last: ${B};">${T}</span></span>${V}</span>`;
+    });
+  }
+}
+if (typeof globalThis < "u")
+  globalThis.Warichu = K;
+if (typeof window < "u")
+  window.Warichu = K;
+
+

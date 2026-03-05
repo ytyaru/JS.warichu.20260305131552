@@ -1,0 +1,39 @@
+.warichu-container {
+  display: inline-flex; /* 括弧と内容を横（または縦）に並べる */
+  align-items: center;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.warichu-content {
+  display: inline-grid;
+  grid-template-areas: "l1" "l2";
+  font-size: 0.5em;
+  line-height: 1.1;
+}
+
+.warichu-line1 { grid-area: l1; white-space: nowrap; }
+.warichu-line2 { grid-area: l2; white-space: nowrap; }
+
+/* 均等割付（justify）を有効にする設定 */
+.warichu-line1, .warichu-line2 {
+  display: block;
+  width: 100%;
+  text-justify: inter-character; /* 日本語の均等割付 */
+}
+
+/* 括弧のスタイル：半角風にする */
+.warichu-bracket {
+  display: inline-block;
+  transform: scaleX(0.5); /* 横幅を半分に */
+  margin: 0 -0.2em;      /* 縮めた分の余白を詰める */
+  font-size: 0.9em;      /* 高さは微調整 */
+}
+
+/* 縦書き対応 */
+[style*="writing-mode: vertical-rl"] .warichu-bracket,
+.text-container[style*="vertical-rl"] .warichu-bracket {
+  transform: scaleY(0.5); /* 縦書き時は高さを半分に */
+  margin: -0.2em 0;
+}
+

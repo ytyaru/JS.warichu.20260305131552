@@ -72,26 +72,19 @@ export class Warichu {
     const total = graphemes.length;
     const { diff } = this.config;
 
-    // バリデーション: 2文字未満
+    // バリデーション: 2文字未満は割注として成立しない
     if (total < 2) {
       if (this._handleError(`割注は合計2文字以上必要です: "${content}"`)) return total;
     }
 
-    // --- 1. 手動分割（｜）の厳格なバリデーション ---
-    const pipes = content.split('｜');
-    if (pipes.length > 2) {
-      // パイプが2つ以上（分割された配列が3つ以上）ある場合は不正
-      if (this._handleError(`パイプ「｜」が複数含まれています: "${content}"`)) return total;
-      // 続行ならパイプをすべて除去して自動分割へ
-      return this._getSplitPoint(content.replace(/｜/g, ''));
-    }
-
-    if (pipes.length === 2) {
-      const pipeIndex = content.indexOf('｜');
-      const l1 = this.getGraphemes(pipes[0]).length;
-      const l2 = this.getGraphemes(pipes[1]).length;
+    // 1. 手動分割（｜）
+    const pipeIndex = content.indexOf('｜');
+    if (pipeIndex !== -1) {
+      const l1 = this.getGraphemes(content.slice(0, pipeIndex)).length;
+      const l2 = total - 1 - l1; // パイプ自身を除いた二行目の数
       if (l1 > 0 && l2 > 0) return pipeIndex;
       if (this._handleError("割注の片方の行が空です。")) return total;
+      // 続行なら｜を消して自動分割へ
       return this._getSplitPoint(content.replace('｜', ''));
     }
 

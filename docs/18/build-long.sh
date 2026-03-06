@@ -20,21 +20,7 @@ cat << 'EOF' > build_process.ts
 import { build } from "bun";
 import { writeFileSync, readFileSync, existsSync, unlinkSync } from "node:fs";
 
-//const unescape = (s: string) => s.replace(/\\u([0-9a-fA-F]{4})/g, (_, h) => String.fromCharCode(parseInt(h, 16)));
-/**
- * Unicodeエスケープのうち、日本語の表示に必要な範囲のみをデコードする
- * 制御文字や特殊なフォーマット用文字はエスケープのまま維持する
- */
-const unescape = (s: string) => s.replace(/\\u([0-9a-fA-F]{4})/g, (_, h) => {
-  const c = parseInt(h, 16);
-  const isJapanese =
-    (c >= 0x3000 && c <= 0x30FF) || // 句読点・かな
-    (c >= 0x4E00 && c <= 0x9FFF) || // 常用漢字
-    (c >= 0xFF00 && c <= 0xFFEF) || // 全角英数・記号
-    (c >= 0x3400 && c <= 0x4DBF);   // 漢字拡張
-  
-  return isJapanese ? String.fromCharCode(c) : `\\u${h}`;
-});
+const unescape = (s: string) => s.replace(/\\u([0-9a-fA-F]{4})/g, (_, h) => String.fromCharCode(parseInt(h, 16)));
 
 // エントリポイントの確認（src/ts か src/js かを自動判定）
 let entry = "./src/ts/warichu.ts";

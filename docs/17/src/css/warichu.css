@@ -3,34 +3,57 @@
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
+  line-height: normal; /* 親の行高さの影響をリセット */
 }
+
 .warichu-content {
   display: inline-grid;
-  grid-template-areas: "l1" "l2";
+  grid-template-areas: "start" "end";
   font-size: 0.5em;
-  line-height: 1.1;
+  line-height: 1.0em; /* 詰めて表示 */
+  text-align: center;
 }
-.warichu-line1 { grid-area: l1; }
-.warichu-line2 { grid-area: l2; }
-.warichu-line1, .warichu-line2 {
+
+.warichu-start { 
+  grid-area: start; 
+}
+
+.warichu-end { 
+  grid-area: end; 
+}
+
+.warichu-start, .warichu-end {
   display: block;
   white-space: nowrap;
+  /* text-justifyは親コンテナのtext-align-lastで制御されるためここでは指定しないが、
+     均等割り付けの挙動を安定させるために指定 */
   text-justify: inter-character;
 }
+
+/* 括弧のスタイル */
+.warichu-bracket {
+  display: inline-block;
+  font-size: inherit;
+}
+
 /* 括弧の半角化：writing-modeの影響を受けないようtransformを設定 */
 .warichu-bracket.is-narrow {
   display: inline-block;
   /* 進行方向（横書きならX, 縦書きならY）を0.5倍にする */
   transform: scaleX(0.5); 
   margin-inline: -0.25em; /* 前後の余白を詰める */
+  transform-origin: center;
 }
 
+/* 縦書き対応 */
 /* 縦書きの時は、ブラウザが自動で文字を回転させているため、
    多くの環境ではscaleXのままで「文字の幅」が縮まりますが、
    環境によりscaleYが必要な場合は以下で補正します */
 [style*="vertical-rl"] .warichu-bracket.is-narrow,
-.text-container[style*="vertical-rl"] .warichu-bracket.is-narrow {
+.text-container[style*="vertical-rl"] .warichu-bracket.is-narrow,
+:where([style*="writing-mode: vertical-rl"]) .warichu-bracket.is-narrow {
   transform: scaleY(0.5);
   margin-inline: 0;
   margin-block: -0.25em;
 }
+

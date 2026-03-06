@@ -241,13 +241,6 @@ export class Warichu {
     //const graphemes = this.getSegments(text);
     //const totalLen = graphemes.length;
     const totalLen = this.getSegments(text).length;
-
-    if (totalLen < 2) {
-      //this.handleError(`割注は合計2文字以上必要です: "${text}"`);
-      this.throwError(`割注は合計2文字以上必要です: "${text}"`);
-      return 1; // 強制的に分割
-    }
-
     const idealCenter = totalLen / 2;
 
     // 2. Intl.Segmenterによる単語単位分割
@@ -278,9 +271,11 @@ export class Warichu {
     }
 
     // 3. 中点分割（フォールバック）
+    return Math.ceil(totalLen / 2);
     // priority 1: 一行目を長く (ceil), 2: 二行目を長く (floor)
     // 例: 5文字 -> 2.5 -> priority1: 3, priority2: 2
-    return priority === 1 ? Math.ceil(idealCenter) : Math.floor(idealCenter);
+    //return priority === 1 ? Math.ceil(idealCenter) : Math.floor(idealCenter);
+
   }
 
   /**
@@ -310,6 +305,38 @@ export class Warichu {
         `<span class="warichu-start" style="${startStyle}">${startText}</span>` +
         `<span class="warichu-end" style="${endStyle}">${endText}</span>` +
       `</span>` +
+      bracketHtmls[1] +
+    `</span>`;
+  }
+  /**
+   * HTML生成
+   * normalizeOptions と validateOptions を経ているため、
+   * brackets.chars は必ず string[] かつ length === 2 であることが保証されている
+   */
+  private generateHtml(startText: string, endText: string): string {
+    const { brackets, align } = this._.options;
+    
+    // 1. 属性とクラスの準備
+    const copyAttr = brackets?.copyable ? '' : ' aria-hidden="true" style="user-select: none; -webkit-user-select: none;"';
+    const bracketClass = `warichu-bracket${brackets?.narrow ? ' is-narrow' : ''}`;
+
+    // 2. 括弧のHTML生成
+    // chars は必ず [string, string] なので、そのまま map で処理
+    const bracketHtmls = (brackets!.chars as string[]).map(c => 
+      c ? `<span class="${bracketClass}"${copyAttr}>${c}</span>` : ''
+    );
+
+    // 3. 本文のHTML生成 (DRY)
+    const contentHtml = (['start', 'end'] as const).map(pos => {
+      const text = pos === 'start' ? startText : endText;
+      const style = `text-align-last: ${align?.[pos]};`;
+      return `<span class="warichu-${pos}" style="${style}">${text}</span>`;
+    }).join('');
+
+    // 4. 組み立て
+    return `<span class="warichu-container">` +
+      bracketHtmls[0] +
+      `<span class="warichu-content">${contentHtml}</span>` +
       bracketHtmls[1] +
     `</span>`;
   }
@@ -350,4 +377,8 @@ export class Warichu {
     });
   }
 }
-
+// 難読化対策済みのグローバル登録
+// @ts-ignore
+if (typeof globalThis !== "undefined") { (globalThis as any)["Warichu"] = Warichu; }
+// @ts-ignore
+if (typeof window !== "undefined") { (window as any)["Warichu"] = Warichu; }

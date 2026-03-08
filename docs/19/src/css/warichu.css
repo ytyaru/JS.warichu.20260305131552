@@ -1,0 +1,36 @@
+@charset "utf-8";
+.warichu-container {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+.warichu-content {
+  display: inline-grid;
+  grid-template-areas: "l1" "l2";
+  font-size: 0.5em;
+  line-height: 1.1;
+}
+.warichu-line1 { grid-area: l1; }
+.warichu-line2 { grid-area: l2; }
+.warichu-line1, .warichu-line2 {
+  display: block;
+  white-space: nowrap;
+  text-justify: inter-character;
+}
+/* 括弧の半角化：writing-modeの影響を受けないようtransformを設定 */
+.warichu-bracket.is-narrow {
+  display: inline-block;
+  /* 進行方向（横書きならX, 縦書きならY）を0.5倍にする */
+  transform: scaleX(0.5); 
+  margin-inline: -0.25em; /* 前後の余白を詰める */
+}
+
+/* 縦書きの時は、ブラウザが自動で文字を回転させているため、
+   多くの環境ではscaleXのままで「文字の幅」が縮まりますが、
+   環境によりscaleYが必要な場合は以下で補正します */
+[style*="vertical-rl"] .warichu-bracket.is-narrow,
+.text-container[style*="vertical-rl"] .warichu-bracket.is-narrow {
+  transform: scaleY(0.5);
+  margin-inline: 0;
+  margin-block: -0.25em;
+}

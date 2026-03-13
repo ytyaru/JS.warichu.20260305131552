@@ -23,28 +23,8 @@
 	1. [長所](#p2-1)
 	2. [短所](#p2-2)
 3. [API設計](#p3)
-    1. [命令型パターン](#p3-1)
-        1. [ループなし](#p3-1-1)
-            1. [関数を直接順番に呼び出す](#p3-1-1-1)
-        2. [ループあり](#p3-1-2)
-            1. [`if-else if-else`](#p3-1-2-1)
-            2. [全件走査・例外あり](#p3-1-2-2)
-            3. [最後のみ強制実行](#p3-1-2-3)
-    2. [関数配列による抽象化パターン（fallback関数）](#p3-2)
-        1. [JS型](#p3-2-1)
-        2. [TS型](#p3-2-2)
-        3. [責任混在型](#p3-2-3)
-        4. [ラッパー型](#p3-2-4)
-        5. [委譲型](#p3-2-5)
-    3. [Strategiesクラスパターン](#p3-3)
-        1. [引数受付（run(i)方式）](#p3-3-1)
-        2. [イテレータ（next()方式）](#p3-3-2)
-    4. [抽象化パターン](#p3-4)
-        1. [親クラスによる分類](#p3-4-1)
-        2. [メソッドチェーン](#p3-4-2)
-    5. [具象化パターン](#p3-5)
-        1. [nullで失格を表現する](#p3-5-1)
-        2. [Symbolで失格を表現する](#p3-5-2)
+	1. [`fallback(strategies, isSuccess, processer)`](#p3-1)
+	2. [`fallback(strategies, keys, isSuccess, processer)`](#p3-2)
 4. [提供形態とビルド戦略](#p4)
 	1. [モジュール分割のジレンマ](#p4-1)
 	2. [最終出力の最適化](#p4-2)
@@ -56,28 +36,8 @@
 [長所]:#p2-1
 [短所]:#p2-2
 [API設計]:#p3
-[命令型パターン]:#p3-1
-[ループなし]:#p3-1-1
-[関数を直接順番に呼び出す]:#p3-1-1-1
-[ループあり]:#p3-1-2
-[`if-else if-else`]:#p3-1-2-1
-[全件走査・例外あり]:#p3-1-2-2
-[最後のみ強制実行]:#p3-1-2-3
-[関数配列による抽象化パターン（fallback関数）]:#p3-2
-[JS型]:#p3-2-1
-[TS型]:#p3-2-2
-[責任混在型]:#p3-2-3
-[ラッパー型]:#p3-2-4
-[委譲型]:#p3-2-5
-[Strategiesクラスパターン]:#p3-3
-[引数受付（run(i)方式）]:#p3-3-1
-[イテレータ（next()方式）]:#p3-3-2
-[抽象化パターン]:#p3-4
-[親クラスによる分類]:#p3-4-1
-[メソッドチェーン]:#p3-4-2
-[具象化パターン]:#p3-5
-[nullで失格を表現する]:#p3-5-1
-[Symbolで失格を表現する]:#p3-5-2
+[`fallback(strategies, isSuccess, processer)`]:#p3-1
+[`fallback(strategies, keys, isSuccess, processer)`]:#p3-2
 [提供形態とビルド戦略]:#p4
 [モジュール分割のジレンマ]:#p4-1
 [最終出力の最適化]:#p4-2
@@ -337,87 +297,32 @@ No|[ソフトウェア工学][]|概要
 <a id="p3"></a>
 ## 3. [API設計][]
 
-13通りを考察した。
-
-1. [命令型パターン](#p3-1)
-    1. [ループなし](#p3-1-1)
-        1. [関数を直接順番に呼び出す](#p3-1-1-1)
-    2. [ループあり](#p3-1-2)
-        1. [`if-else if-else`](#p3-1-2-1)
-        2. [全件走査・例外あり](#p3-1-2-2)
-        3. [最後のみ強制実行](#p3-1-2-3)
-2. [関数配列による抽象化パターン（fallback関数）](#p3-2)
-    1. [JS型](#p3-2-1)
-    2. [TS型](#p3-2-2)
-    3. [責任混在型](#p3-2-3)
-    4. [ラッパー型](#p3-2-4)
-    5. [委譲型](#p3-2-5)
-3. [Strategiesクラスパターン](#p3-3)
-    1. [引数受付（run(i)方式）](#p3-3-1)
-    2. [イテレータ（next()方式）](#p3-3-2)
-4. [抽象化パターン](#p3-4)
-    1. [親クラスによる分類](#p3-4-1)
-    2. [メソッドチェーン](#p3-4-2)
-5. [具象化パターン](#p3-5)
-    1. [nullで失格を表現する](#p3-5-1)
-    2. [Symbolで失格を表現する](#p3-5-2)
-
 <a id="p3-1"></a>
-## 3.1 [命令型パターン][]
+### 3.1 [最終的なAPI構造（fallback関数）][]
 
-1. [ループなし](#p3-1-1)
-2. [ループあり](#p3-1-2)
-
-[ループなし]:#p3-1-1
-[ループあり]:#p3-1-2
-
-<a id="p3-1-1"></a>
-### 3.1.1 [ループなし][]
-
-1. [関数を直接順番に呼び出す](#p3-1-1-1)
-
-[関数を直接順番に呼び出す]:#p3-1-1-1
-
-<a id="p3-1-1-1"></a>
-#### 3.1.1.1 [関数を直接順番に呼び出す][]
-
-順次実行し、成功すれば中断する。
+割注の分割位置算出において、複数の戦略を順次試行し、有効な値が得られ次第確定する `fallback` 関数を定義する。
 
 ```typescript
-// 命令型による実装例（ループなし）
-let index = this.getExplicitSplitIndex(graphemes, splitChar);
-let skip = null===index ? 0 : 1;
-if (index === null) {index = this.getWordSplitIndex(content, totalLen)}
-if (index === null) {index = this.getDefaultSplitIndex(totalLen)}
-return [
-  graphemes.slice(0, index!).join(''),
-  graphemes.slice(index! + skip).join('')
-];
-```
-
-
-```typescript
-// 命令型による実装例（ループなし）
-let index = this.getExplicitSplitIndex(graphemes, splitChar);
-let skip = 1;
-
-if (index === null) {
-  index = this.getWordSplitIndex(content, totalLen);
-  skip = 0;
+/**
+ * 複数の戦略を順次実行し、条件に合致した最初の結果を返す。
+ * 最後の戦略は条件に関わらず必ず実行・返却される。
+ */
+export function fallback<T, R>(
+  strategies: (() => T)[],
+  isSuccess: (res: T, index: number) => boolean,
+  processor: (res: T, index: number, strategy: () => T) => R
+): R {
+  const LAST_IDX = strategies.length - 1;
+  
+  for (let i = 0; i < LAST_IDX; i++) {
+    const res = strategies[i]();
+    if (isSuccess(res, i)) {
+      return processor(res, i, strategies[i]);
+    }
+  }
+  
+  return processor(strategies[LAST_IDX](), LAST_IDX, strategies[LAST_IDX]);
 }
-
-if (index === null) {
-  index = this.getDefaultSplitIndex(totalLen);
-  skip = 0;
-}
-
-return [
-  graphemes.slice(0, index!).join(''),
-  graphemes.slice(index! + skip).join('')
-];
 ```
-
-**問題点**:
-戦略が増減するたびに、中断条件（`if (index === null)`）の記述が重複し、コードの保守性が著しく低下する。また、各戦略の実行順序がハードコーディングされており、順序の入れ替えや戦略の追加が困難である。
 
 

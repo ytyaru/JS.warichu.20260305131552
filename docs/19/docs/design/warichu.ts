@@ -459,7 +459,7 @@ class WarichuSplitResult {
 }
 
 // 戦略の定義（ここで戻り値の型を強制する）
-abstract WarichuSplitStrategy {
+abstract class WarichuSplitStrategy {
   constructor(options) {this.options=options;}
   // calc メソッドは必ず WarichuSplitResult を返さなければならない
   calc(...args: any[]): WarichuSplitResult; 
@@ -469,7 +469,7 @@ abstract WarichuSplitStrategy {
 class ExplicitSplitStrategy implements WarichuSplitStrategy {
   calc(graphemes: string[], splitChar: string): WarichuSplitResult {
     const index = graphemes.indexOf(splitChar);
-    if (index === -1) return null;
+    if (index === -1) return new WarichuSplitResult();
 
     // バリデーション: 複数は禁止
     if (graphemes.indexOf(splitChar, index + 1) !== -1) {
@@ -544,10 +544,10 @@ class WarichuSplitter {
     const args = this.makeArgs(content, graphemes, totalLen, splitChar);
     let res;
     for (let i=0; i<strageties.length; i++) {
-      res = s.calc(...args[i]);
-      if (res.exist(index)) {return (res.value as SplitPos)}
+      res = this._.strageties[i].calc(...args[i]);
+      if (res.exist()) {return (res.value as SplitPos)}
     }
-    throw new Erorr('プログラミングエラー。到達しないはずの実行パスが実行された。最後の戦略は必ず有効値{index,skip}を返すべきだがsymbolを返した。')
+    throw new Error('プログラミングエラー。到達しないはずの実行パスが実行された。最後の戦略は必ず有効値{index,skip}を返すべきだがsymbolを返した。')
 //    return (res.value as SplitPos); // 最後の戦略は必ずSplitPos型であること（ここは実行されないはず）
   }
 

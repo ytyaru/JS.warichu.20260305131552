@@ -7,18 +7,26 @@
  */
 export class ErrorClass {
   /**
-   * 複数のエラークラスを生成して配列で返す
+   * 複数のエラークラスを生成してオブジェクトで返す
    * @param definitions エラークラス名と親クラス名をスペース区切りで指定 (例: 'ChildError ParentError')
-   * @returns 生成されたエラークラスの配列
+   * @returns 生成されたエラークラスを格納したオブジェクト { クラス名: クラス本体 }
    */
-  static make(...definitions: string[]): any[] {
-    const created = new Map<string, any>();
-    created.set('Error', Error);
+  static make(...definitions: string[]): Record<string, any> {
+    const result: Record<string, any> = {};
+    const createdInThisCall = new Map<string, any>();
+    createdInThisCall.set('Error', Error);
 
-    return definitions.map(def => {
+    // 引数内でのクラス名重複チェック
+    const names = definitions.map(d => d.split(' ')[0]);
+    if (new Set(names).size !== names.length) {
+      throw new Error('ErrorClass.make: 引数の中でクラス名が重複しています。');
+    }
+
+    for (const def of definitions) {
       const [name, parentName = 'Error'] = def.split(' ');
       
-      const Parent = created.get(parentName) || (typeof globalThis !== 'undefined' ? (globalThis as any)[parentName] : Error) || Error;
+      // 親クラスの解決（今回の呼び出しで生成済み -> グローバル -> Error）
+      const Parent = result[parentName] || (typeof globalThis !== 'undefined' ? (globalThis as any)[parentName] : Error) || Error;
 
       const CustomError = class extends Parent {
         /**
@@ -30,11 +38,13 @@ export class ErrorClass {
           this.name = name;
         }
       };
+      
+      // クラス名を定義
       Object.defineProperty(CustomError, 'name', { value: name });
       
-      created.set(name, CustomError);
-      return CustomError;
-    });
+      result[name] = CustomError;
+    }
+    return result;
   }
 
   /**
@@ -44,10 +54,9 @@ export class ErrorClass {
   static regist(...definitions: string[]): void {
     const classes = this.make(...definitions);
     if (typeof globalThis !== 'undefined') {
-      definitions.forEach((def, i) => {
-        const name = def.split(' ')[0];
-        (globalThis as any)[name] = classes[i];
-      });
+      for (const name in classes) {
+        (globalThis as any)[name] = classes[name];
+      }
     }
   }
 }

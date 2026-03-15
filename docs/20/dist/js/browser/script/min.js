@@ -1,0 +1,109 @@
+class Y extends Error {
+  constructor(z, j) {
+    super(z, j ? { cause: j } : undefined);
+    this.name = "WarichuError";
+  }
+}
+var I = { syntax: { enclosers: { open: "〔", close: "〕" }, separator: "｜" }, brackets: { chars: ["(", ")"], copyable: true, narrow: false }, split: { diff: 1, priority: 1 }, align: { start: "start", end: "start" } }, P = { "(": ")", "[": "]", "{": "}", "<": ">", "（": "）", "［": "］", "｛": "｝", "＜": "＞", "〔": "〕", "〘": "〙", "〚": "〛", "【": "】", "〖": "〗", "『": "』", "「": "」", "〈": "〉", "《": "》", "“": "”", "‘": "’", "«": "»" };
+
+class _ {
+  _;
+  constructor(z = {}) {
+    this._ = { options: this.normalize(z) }, this.validate();
+  }
+  getSegments(z, j = "grapheme", q = "ja") {
+    if (typeof Intl < "u" && Intl.Segmenter) {
+      let G = new Intl.Segmenter(q, { granularity: j });
+      return Array.from(G.segment(z)).map((B) => B.segment);
+    }
+    return j === "grapheme" ? Array.from(z) : [];
+  }
+  normalize(z) {
+    let j = { syntax: { ...I.syntax, ...z.syntax }, brackets: { ...I.brackets, ...z.brackets }, split: { ...I.split, ...z.split }, align: { ...I.align, ...z.align } };
+    if (z.syntax?.enclosers) {
+      let q = z.syntax.enclosers, G = "", B = "";
+      if (typeof q === "string") {
+        let F = this.getSegments(q);
+        G = F[0] ?? "", B = F[1] ?? "";
+      } else if (Array.isArray(q))
+        G = q[0] ?? "", B = q[1] ?? "";
+      else
+        G = q.open ?? "", B = q.close ?? "";
+      j.syntax.enclosers = { open: G, close: B };
+    }
+    if (z.brackets?.chars) {
+      let q = z.brackets.chars;
+      j.brackets.chars = typeof q === "string" ? this.getSegments(q) : q;
+    }
+    if (Array.isArray(j.brackets.chars) && j.brackets.chars.length === 0)
+      j.brackets.chars = ["", ""];
+    return j;
+  }
+  validate() {
+    let { syntax: z, brackets: j, split: q, align: G } = this._.options, B = (Q, U, H) => {
+      if (typeof U !== H)
+        throw new Y(`型が不正です。対象キー: options.${Q} 期待値: ${H} 実際値: ${typeof U}`);
+    }, F = (Q, U, H, f) => {
+      if (!H)
+        throw new Y(`値が不正です。対象キー: options.${Q} 期待値: ${f} 実際値: ${String(U)}`);
+    }, { open: M, close: N } = z.enclosers, { separator: K } = z;
+    if (!P[M] || P[M] !== N) {
+      let Q = Object.keys(P).map((U) => `${U}${P[U]}`).join(", ");
+      throw new Y(`options.syntax.enclosers が不正です。許可されているペア: ${Q} 実際値: ${M}${N}`);
+    }
+    let J = this.getSegments(K).length;
+    if (F("syntax.separator", K, J === 1, "1文字（書記素）"), K === M || K === N)
+      throw new Y(`options.syntax.separator は enclosers と異なる文字である必要があります: ${K}`);
+    let X = (Q) => /[\p{C}]/u.test(Q);
+    if (X(M) || X(N) || X(K))
+      throw new Y("options.syntax に制御文字を含めることはできません。");
+    let Z = this.getSegments(j.chars[0]).length, D = this.getSegments(j.chars[1]).length, R = Z + D;
+    F("brackets.chars", j.chars, Z === D && (R === 0 || R === 2), "両方とも空文字、または両方とも1文字"), B("brackets.copyable", j.copyable, "boolean"), B("brackets.narrow", j.narrow, "boolean"), B("split.diff", q.diff, "number"), F("split.diff", q.diff, Number.isInteger(q.diff) && q.diff >= 0, "0以上の整数"), B("split.priority", q.priority, "number"), F("split.priority", q.priority, [1, 2].includes(q.priority), "1 または 2");
+    let $ = ["start", "end", "center", "justify"];
+    B("align.start", G.start, "string"), F("align.start", G.start, $.includes(G.start), $.join(", ")), B("align.end", G.end, "string"), F("align.end", G.end, $.includes(G.end), $.join(", "));
+  }
+  getWordSplitIndex(z, j) {
+    let { diff: q, priority: G } = this._.options.split, B = this.getSegments(z, "word");
+    if (B.length <= 1)
+      return null;
+    let F = [], M = 0;
+    for (let J = 0;J < B.length - 1; J++)
+      if (M += this.getSegments(B[J], "grapheme").length, Math.abs(2 * M - j) <= q)
+        F.push(M);
+    if (F.length === 0)
+      return null;
+    let N = Math.min(...F.map((J) => Math.abs(2 * J - j))), K = F.filter((J) => Math.abs(2 * J - j) === N);
+    return K.length === 1 ? K[0] : G === 1 ? K.find((J) => 2 * J >= j) : K.find((J) => 2 * J < j);
+  }
+  getDefaultSplitIndex(z) {
+    return Math.ceil(z / 2);
+  }
+  splitContent(z) {
+    let j = this.getSegments(z, "grapheme"), q = j.length, G = this._.options.syntax.separator, B = this.getExplicitSplitIndex(j, G), F = 1;
+    if (B === null)
+      B = this.getWordSplitIndex(z, q), F = 0;
+    if (B === null)
+      B = this.getDefaultSplitIndex(q), F = 0;
+    return [j.slice(0, B).join(""), j.slice(B + F).join("")];
+  }
+  generateHtml(z, j) {
+    let { brackets: q, align: G } = this._.options, B = q.chars, F = q.copyable ? "" : ' aria-hidden="true" style="user-select: none; -webkit-user-select: none;"', M = `warichu-bracket${q.narrow ? " is-narrow" : ""}`, N = B.map((J) => J ? `<span class="${M}"${F}>${J}</span>` : ""), K = ["start", "end"].map((J) => {
+      let X = J === "start" ? z : j, Z = `text-align-last: ${G[J]};`;
+      return `<span class="warichu-${J}" style="${Z}">${X}</span>`;
+    }).join("");
+    return '<span class="warichu-container">' + N[0] + `<span class="warichu-content">${K}</span>` + N[1] + "</span>";
+  }
+  parse(z) {
+    let { open: j, close: q } = this._.options.syntax.enclosers, G = (F) => F.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), B = new RegExp(`${G(j)}(.*?)${G(q)}`, "g");
+    return z.replace(B, (F, M) => {
+      let [N, K] = this.splitContent(M);
+      return this.generateHtml(N, K);
+    });
+  }
+}
+if (typeof globalThis < "u")
+  globalThis.Warichu = _;
+if (typeof window < "u")
+  window.Warichu = _;
+
+export { Y as WarichuError, _ as Warichu };

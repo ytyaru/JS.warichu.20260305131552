@@ -19,5 +19,3 @@ cp src/css/warichu.css dist/css/code.css
 # 4. ビルドプロセスの実行
 bun build/build.ts
 
-echo "ビルド完了"
-

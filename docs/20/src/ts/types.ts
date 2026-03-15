@@ -7,7 +7,10 @@ import { ErrorClass } from './utils/error-class';
  * 割注処理に関する汎用例外クラス
  * ErrorClass.make により動的に生成され、定数としてエクスポートされる
  */
-export const { WarichuError } = ErrorClass.make('WarichuError');
+//export const { WarichuError } = ErrorClass.make('WarichuError'); // TypeScriptではエラー
+const _errs = ErrorClass.make('WarichuError');
+/** 割注処理に関する汎用例外クラス */
+export const WarichuError = _errs.WarichuError;
 
 /**
  * 割注処理に関する汎用エラー

@@ -5,17 +5,43 @@
 import { WarichuInternalOptions, ALLOWED_PAIRS, WarichuError } from './types';
 import { getSegments } from './utils/get-segments';
 
-// --- ヘルパー関数 ---
+// --- 内部ヘルパー関数 ---
 
-const checkType = (key: string, value: unknown, expected: string) => {
-  if (typeof value !== expected) {
-    throw new WarichuError(`型が不正です。対象キー: options.${key} 期待値: ${expected} 実際値: ${typeof value}`);
-  }
+/**
+ * エラーメッセージを生成する
+ * @param type エラーの種類（'型' | '値'）
+ * @param key オプションのキー名
+ * @param expected 期待値の説明
+ * @param actual 実際値
+ * @returns WarichuError インスタンス
+ */
+const createError = (type: '型' | '値', key: string, expected: string, actual: string) => {
+  return new WarichuError(`${type}が不正です。対象キー: options.${key} 期待値: ${expected} 実際値: ${actual}`);
 };
 
-const checkValue = (key: string, value: unknown, isValid: boolean, expected: string) => {
-  if (!isValid) {
-    throw new WarichuError(`値が不正です。対象キー: options.${key} 期待値: ${expected} 実際値: ${String(value)}`);
+/**
+ * 型と値を一括で検証する
+ * @param key オプションのキー名
+ * @param value 検証する値
+ * @param expectedType 期待される型（typeof の戻り値）
+ * @param condition 値の妥当性条件（任意）
+ * @param expectedValueMsg 値が不正な場合の期待値説明（condition指定時は必須）
+ */
+const assertValid = (
+  key: string,
+  value: unknown,
+  expectedType: string,
+  condition?: boolean,
+  expectedValueMsg?: string
+) => {
+  // 1. 型チェック
+  if (typeof value !== expectedType) {
+    throw createError('型', key, expectedType, typeof value);
+  }
+
+  // 2. 値チェック（条件が指定されている場合のみ）
+  if (condition !== undefined && !condition) {
+    throw createError('値', key, expectedValueMsg!, String(value));
   }
 };
 
@@ -43,22 +69,22 @@ function validateSyntax(syntax: WarichuInternalOptions['syntax']): void {
   const { open, close } = syntax.enclosers;
   const { separator } = syntax;
 
-  // 1. ホワイトリストチェック
+  // 1. ホワイトリストチェック（複合ルールのた​​め if 文で記述）
   if (!ALLOWED_PAIRS[open] || ALLOWED_PAIRS[open] !== close) {
     const allowed = Object.keys(ALLOWED_PAIRS).map(k => `${k}${ALLOWED_PAIRS[k]}`).join(', ');
-    throw new WarichuError(`options.syntax.enclosers が不正です。許可されているペア: ${allowed} 実際値: ${open}${close}`);
+    throw createError('値', 'syntax.enclosers', `許可されているペア(${allowed})`, `${open}${close}`);
   }
 
-  // 2. 分割記号の文字数チェック
+  // 2. 分割記号の検証
   const sepLen = getSegments(separator).length;
-  checkValue('syntax.separator', separator, sepLen === 1, '1文字（書記素）');
+  assertValid('syntax.separator', separator, 'string', sepLen === 1, '1文字（書記素）');
 
   // 3. 重複チェック
   if (separator === open || separator === close) {
     throw new WarichuError(`options.syntax.separator は enclosers と異なる文字である必要があります: ${separator}`);
   }
 
-  // 4. 制御文字チェック
+  // 4. 制御文字チェック (\p{C})
   const hasControl = (s: string) => /[\p{C}]/u.test(s);
   if (hasControl(open) || hasControl(close) || hasControl(separator)) {
     throw new WarichuError('options.syntax に制御文字を含めることはできません。');
@@ -69,30 +95,28 @@ function validateSyntax(syntax: WarichuInternalOptions['syntax']): void {
  * 装飾設定（括弧）の妥当性を検証する
  */
 function validateBrackets(brackets: WarichuInternalOptions['brackets']): void {
-  // 文字数チェック (DRY化)
-  const[c0, c1] = brackets.chars.map(c => getSegments(c).length);
+  const [c0, c1] = brackets.chars.map(c => getSegments(c).length);
   const totalLen = c0 + c1;
-  
-  checkValue(
-    'brackets.chars', 
-    brackets.chars, 
-    c0 === c1 && (totalLen === 0 || totalLen === 2), 
+
+  // 文字数と対称性の検証
+  assertValid(
+    'brackets.chars',
+    brackets.chars,
+    'object', // Array は typeof で 'object'
+    c0 === c1 && (totalLen === 0 || totalLen === 2),
     '両方とも空文字、または両方とも1文字'
   );
 
-  checkType('brackets.copyable', brackets.copyable, 'boolean');
-  checkType('brackets.narrow', brackets.narrow, 'boolean');
+  assertValid('brackets.copyable', brackets.copyable, 'boolean');
+  assertValid('brackets.narrow', brackets.narrow, 'boolean');
 }
 
 /**
  * 分割設定の妥当性を検証する
  */
 function validateSplit(split: WarichuInternalOptions['split']): void {
-  checkType('split.diff', split.diff, 'number');
-  checkValue('split.diff', split.diff, Number.isInteger(split.diff) && split.diff >= 0, '0以上の整数');
-
-  checkType('split.priority', split.priority, 'number');
-  checkValue('split.priority', split.priority, [1, 2].includes(split.priority), '1 または 2');
+  assertValid('split.diff', split.diff, 'number', Number.isInteger(split.diff) && split.diff >= 0, '0以上の整数');
+  assertValid('split.priority', split.priority, 'number', [1, 2].includes(split.priority), '1 または 2');
 }
 
 /**
@@ -100,10 +124,9 @@ function validateSplit(split: WarichuInternalOptions['split']): void {
  */
 function validateAlign(align: WarichuInternalOptions['align']): void {
   const validAligns = ['start', 'end', 'center', 'justify'];
-  
-  // start と end のチェックを DRY 化
+
   (['start', 'end'] as const).forEach(pos => {
-    checkType(`align.${pos}`, align[pos], 'string');
-    checkValue(`align.${pos}`, align[pos], validAligns.includes(align[pos]), validAligns.join(', '));
+    assertValid(`align.${pos}`, align[pos], 'string', validAligns.includes(align[pos]), validAligns.join(', '));
   });
 }
+

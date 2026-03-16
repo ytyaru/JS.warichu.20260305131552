@@ -2,40 +2,58 @@
 // src/ts/code/utils/error-class.ts
 class ErrorClass {
   static make(...definitions) {
+    return this.makeObj(...definitions);
+  }
+  static makeObj(...definitions) {
     const result = {};
-    const createdInThisCall = new Map;
-    createdInThisCall.set("Error", Error);
     const names = definitions.map((d) => d.split(" ")[0]);
     if (new Set(names).size !== names.length) {
-      throw new Error("ErrorClass.make: 引数の中でクラス名が重複しています。");
+      throw new Error("ErrorClass.makeObj: クラス名が重複しています。");
     }
     for (const def of definitions) {
-      const [name, parentName = "Error"] = def.split(" ");
-      const Parent = result[parentName] || (typeof globalThis !== "undefined" ? globalThis[parentName] : Error) || Error;
-      const CustomError = class extends Parent {
-        constructor(message, cause) {
-          super(message, cause ? { cause } : undefined);
-          this.name = name;
-        }
-      };
-      Object.defineProperty(CustomError, "name", { value: name });
-      result[name] = CustomError;
+      const cls = this.makeCls(def);
+      result[cls.name] = cls;
     }
     return result;
   }
+  static makeAry(...definitions) {
+    return definitions.map((def) => this.makeCls(def));
+  }
+  static makeCls(definition) {
+    if (typeof definition !== "string") {
+      throw new TypeError("ErrorClass.makeCls: 定義は文字列である必要があります。");
+    }
+    const [name, parentName = "Error"] = definition.trim().split(/\s+/);
+    if (!name || /^[0-9]/.test(name) || /[^a-zA-Z0-9_$]/.test(name)) {
+      throw new Error(`ErrorClass.makeCls: 不正なクラス名です: "${name}"`);
+    }
+    const Parent = (typeof globalThis !== "undefined" ? globalThis[parentName] : null) || Error;
+    const CustomError = class extends Parent {
+      constructor(message, cause) {
+        super(message, cause ? { cause } : undefined);
+        this.name = name;
+      }
+    };
+    Object.defineProperty(CustomError, "name", { value: name, configurable: true });
+    return CustomError;
+  }
   static regist(...definitions) {
-    const classes = this.make(...definitions);
+    const obj = this.makeObj(...definitions);
     if (typeof globalThis !== "undefined") {
-      for (const name in classes) {
-        globalThis[name] = classes[name];
+      for (const name in obj) {
+        globalThis[name] = obj[name];
+      }
+    }
+    if (typeof window !== "undefined") {
+      for (const name in obj) {
+        window[name] = obj[name];
       }
     }
   }
 }
 
 // src/ts/code/types.ts
-var _errs = ErrorClass.make("WarichuError");
-var WarichuError = _errs.WarichuError;
+var { WarichuError } = ErrorClass.make("WarichuError");
 var ALLOWED_PAIRS = {
   "(": ")",
   "[": "]",
@@ -204,8 +222,7 @@ function validateAlign(align) {
 }
 
 // src/ts/code/split.ts
-var _errs2 = ErrorClass.make("ImplementationError");
-var ImplementationError = _errs2.ImplementationError;
+var { ImplementationError } = ErrorClass.make("ImplementationError");
 
 class WarichuSplitResult {
   static NONE = Symbol("WarichuSplitResult.NONE");

@@ -7,10 +7,10 @@ import { getSegments } from './utils/get-segments';
 import { ErrorClass } from './utils/error-class';
 
 // 汎用的な実装エラークラスを登録
-//export const { ImplementationError } = ErrorClass.make('ImplementationError'); // TypeScriptではエラー
-const _errs = ErrorClass.make('ImplementationError');
-/** プログラムの実装ミスを示すエラー */
-export const ImplementationError = _errs.ImplementationError;
+export const { ImplementationError } = ErrorClass.make('ImplementationError');
+//const _errs = ErrorClass.make('ImplementationError');
+///** プログラムの実装ミスを示すエラー */
+//export const ImplementationError = _errs.ImplementationError;
 
 /** 分割位置情報の型定義 */
 export type SplitPos = { index: number; skip: number };

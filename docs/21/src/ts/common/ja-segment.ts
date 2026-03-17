@@ -13,12 +13,12 @@ export class JaSegment {
   }
 }
 class JaSegmentFactory {
-  private static get(granularity: 'grapheme' | 'word' | 'phrase' | 'sentence', text: string): string[] {
-    return granularity === 'phrase'
-      ? PhraseSegmenter.segment(text)
-      : JaIntlSegmenter.isSupported
-        ? JaIntlSegmenter.segment(granularity, text)
-        : DefaultSegmenter.segment(granularity, text);
+  private static get(granularity: 'grapheme' | 'word' | 'phrase' | 'sentence'): any {
+    return 'phrase'===granularity
+      ? PhraseSegmenter
+      : (JaIntlSegmenter.isSupported
+        ? JaIntlSegmenter
+        : DefaultSegmenter);
   }
   static segment(granularity: 'grapheme' | 'word' | 'phrase' | 'sentence', text: string): string[] {
     return this.get(granularity).segment(granularity as any, text);

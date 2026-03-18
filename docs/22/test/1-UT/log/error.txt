@@ -1,0 +1,50 @@
+Received: "<span class=\"warichu-container\"><span class=\"warichu-bracket is-narrow\">（</span><span class=\"warichu-content\"><span class=\"warichu-line1\" style=\"text-align-last: start;\">あ</span><span class=\"warichu-line2\" style=\"text-align-last: start;\">いう</span></span><span class=\"warichu-bracket is-narrow\">）</span></span>"
+
+      at <anonymous> (/tmp/work/JS.warichu.20260305131552/docs/17/test/js/warichu.ts:55:19)
+(fail) 【最終網羅検証】対象: ./src/js/warichu.ts > 2. 境界値・物理分割と巨大データ（10001字）誤差回避テスト > 最小奇数長〔あいう〕(3字)が 2:1（一行目優先）で分割されること [0.86ms]
+(pass) 【最終網羅検証】対象: ./src/js/warichu.ts > 2. 境界値・物理分割と巨大データ（10001字）誤差回避テスト > 巨大な奇数長(10001字)において、IEEE754の浮動小数点誤差に負けず、整数演算によって厳密に 5001:5000 で分割されることの証明 [2586.79ms]
+(pass) 【最終網羅検証】対象: ./src/js/warichu.ts > 3. 言語解析（Intl.Segmenter）の仕様と既知の限界説明 > 【解析成功】常用漢字（東京都）は辞書により『東京｜都』(2:1) と適切に分割されること [0.94ms]
+(pass) 【最終網羅検証】対象: ./src/js/warichu.ts > 3. 言語解析（Intl.Segmenter）の仕様と既知の限界説明 > 【既知の限界】𠮷野家(3字)はサロゲートペア『𠮷』がブラウザ辞書未対応のため、Unicode境界判定（未知の語の切り出し）が優先され『𠮷｜野家』(1:2) になる。これはIntl.Segmenter側の辞書不備による現在の制限事項である [0.46ms]
+(pass) 【最終網羅検証】対象: ./src/js/warichu.ts > 3. 言語解析（Intl.Segmenter）の仕様と既知の限界説明 > 【救済策】パイプ『｜』による手動分割は、自動解析（𠮷｜野家）の結果を上書きし、字数差を問わずユーザーの意図（𠮷野｜家）を強制できること [0.32ms]
+(pass) 【最終網羅検証】対象: ./src/js/warichu.ts > 4. 意地悪テスト：虚無、空白、不正なパイプ、例外メッセージ > 〔　　〕(全角スペース2字)が正常に出力されること [0.35ms]
+(pass) 【最終網羅検証】対象: ./src/js/warichu.ts > 4. 意地悪テスト：虚無、空白、不正なパイプ、例外メッセージ > 〔　｜い〕および〔あ｜　〕のように、空白が含まれていても各行に一字以上あれば受理されること [0.41ms]
+(pass) 【最終網羅検証】対象: ./src/js/warichu.ts > 4. 意地悪テスト：虚無、空白、不正なパイプ、例外メッセージ > 不正なパイプ：〔｜〕, 〔あ｜〕, 〔｜い〕が正確なメッセージで拒絶されること [2.00ms]
+114 |       expect(() => w.parse("〔｜い〕")).toThrow(msgLineEmpty);
+115 |     });
+116 | 
+117 |     test("重複パイプ：〔｜｜〕, 〔｜｜｜〕, 〔あ｜｜い〕, 〔あ｜い｜う〕が正確なメッセージで例外となること", () => {
+118 |       const w = new WarichuClass({ error: "throw" });
+119 |       expect(() => w.parse("〔｜｜〕")).toThrow(msgMultiPipe);
+                                         ^
+error: expect(received).toThrow(expected)
+
+Expected substring: "パイプ「｜」が複数含まれています"
+Received message: "割注の片方の行が空です。"
+
+      at <anonymous> (/tmp/work/JS.warichu.20260305131552/docs/17/test/js/warichu.ts:119:36)
+(fail) 【最終網羅検証】対象: ./src/js/warichu.ts > 4. 意地悪テスト：虚無、空白、不正なパイプ、例外メッセージ > 重複パイプ：〔｜｜〕, 〔｜｜｜〕, 〔あ｜｜い〕, 〔あ｜い｜う〕が正確なメッセージで例外となること [0.77ms]
+122 |       expect(() => w.parse("〔あ｜い｜う〕")).toThrow(msgMultiPipe);
+123 |     });
+124 | 
+125 |     test("合計2字未満：〔〕および〔あ〕が例外となること", () => {
+126 |       const w = new WarichuClass({ error: "throw" });
+127 |       expect(() => w.parse("〔〕")).toThrow(msgMinLen);
+                                       ^
+error: expect(received).toThrow(expected)
+
+Expected substring: "割注は合計2文字以上必要です"
+
+Received function did not throw
+Received value: "〔〕"
+
+      at <anonymous> (/tmp/work/JS.warichu.20260305131552/docs/17/test/js/warichu.ts:127:34)
+(fail) 【最終網羅検証】対象: ./src/js/warichu.ts > 4. 意地悪テスト：虚無、空白、不正なパイプ、例外メッセージ > 合計2字未満：〔〕および〔あ〕が例外となること [0.57ms]
+(pass) 【最終網羅検証】対象: ./src/js/warichu.ts > 5. 混在テキストおよび複数割注の検証 > 通常のテキストと割注が混在し、複数の割注がすべて正しく置換されること [1.23ms]
+(pass) 【最終網羅検証】対象: ./src/js/warichu.ts > 6. 配布品質・カスタムエラー・Minify耐性 > カスタムエラークラスを指定して、型とメッセージが一致した例外がスローされること [0.87ms]
+(pass) 【最終網羅検証】対象: ./src/js/warichu.ts > 6. 配布品質・カスタムエラー・Minify耐性 > mode: min において console.debug が物理的に除去されていること [0.13ms]
+(pass) 【最終網羅検証】対象: ./src/js/warichu.ts > 6. 配布品質・カスタムエラー・Minify耐性 > 難読化された min.js でも globalThis['Warichu'] 経由で正常に機能すること [0.34ms]
+
+ 12 pass
+ 4 fail
+ 31 expect() calls
+Ran 16 tests across 1 file. [2.69s]
